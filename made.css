@@ -1,0 +1,292 @@
+body {
+/*    글꼴      우선사용   예외 발생시 사용자 컴퓨터에 있는 고딕체를 가져와서 사용*/
+  font-family: 'Poppins', sans-serif;
+    
+  /* 가중치(두께)  가져온 700과 300중에 300을 우선적으로 사용하겠다.*/
+  font-weight: 300;
+}
+
+header {
+    position: relative;
+}
+
+/*
+header .container{
+    bootstrap을 사용하지 않는 경우
+    display: flex; 수평 정렬
+    align-items: center; 가운데 정렬
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+}*/
+
+/*header에 있는 .forms의 class를 가진 input요소 중에 .form-control class를 가진 자식에 적용*/
+header .forms input.form-control {
+  color: white;
+  background-color: rgba(225, 225, 225, 0.15);
+  border-color: rgba(225, 225, 225, 0.3);
+}
+
+/* : 가상 클래스 선택
+  :: 가상 요소 선택  => placeholder는 가상 요소     */
+/*header에 있는 .forms의 class를 가진 input요소 중 .form-control class를 가진 자식중 가상요소에 적용*/
+header .forms input.form-control::placeholder{
+  color: rgba(225, 225, 225, 0.6);
+    
+}
+/* 만약 bootstrap을 사용하지 않는 경우
+header .forms button.btn-link{
+    text-decoration: none;
+} */
+
+/*동일한 태그(구역)안에 class를 가지고 있으면 태그와 class를 붙여쓰고 <section class="hero"> ==> section.hero 
+  태그(구역)가 다른 경우 앞과 띄어쓰기로 구분한다.
+  <section class="hero">
+      <div class="container">  ==> section.hero(동일) .container(다름)
+
+  <header>
+      <div class="forms d-flex">
+          <input type="text" class="form-control me-2">  ==> header(다름) .forms(다름) input.form-control(동일)        
+
+/*section이라는 태그를 가지고 있고 class의 이름은 hero*/
+
+/*속성 선택*/
+header [data-bs-toggle="offcanvas"] {
+  display: none; /*화면에 보여지는 요소: 보이지 마라: none*/
+
+}
+
+header .offcanvas .list-group-item {
+  padding: 16px;
+}
+
+header .offcanvas .list-group-item a {
+  color: black;
+  text-decoration: none;
+}
+
+header .offcanvas .list-group-item a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+  header .logo {
+    flex-grow: 1; /*증가너비 logo가 차지하는 부분을 최대한 오른 쪽으로 밀어냄*/
+  }
+  /*다중 선택자 : 여러개의 선택자 선택할 수 있음 
+  주의.  쉼표(,)로 구분해야 한다.*/
+  header .nav,
+  header .forms input.form-control,
+  header .forms .btn-link{
+    display: none;
+  }
+  header [data-bs-toggle="offcanvas"] {
+    display: block; /*화면에 보여져라 : block*/
+  }
+}
+
+section.hero {
+  background-color: #040D22;
+  position: relative;
+  overflow: hidden; /*넘치는 부분 잘라내기*/
+}
+section.hero img.globe {
+  width: 900px;
+  position: absolute;
+  top: -5%;
+  left: 46%;
+}
+section.hero img.glow {
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+section.hero .container {
+  padding-top: 160px;
+  padding-bottom: 160px;
+  position: relative;
+}
+section.hero .headline h1 {
+  font-size: 68px;
+  font-weight: 700;
+    /*글자와 글자 사이의 간격 수치 크다:거리가 멀어짐, 작다: 거리가 가까워짐*/
+  letter-spacing: -2px;
+}
+section.hero .headline p {
+  font-size: 26px;
+}
+section.hero .curve {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+}
+
+section.youtube {
+  position: relative;
+}
+/*ratio 위에 작성한 이유는 container가 ratio의 부모요소이기 때문에 위에 만들어야 한다.*/
+section.youtube .container {
+  padding-top: 90px;
+  padding-bottom: 70px;
+  position: relative;
+}
+
+section.youtube img.astronaut {
+  width: 480px;
+  /*position은 기준이 되는 요소가 부모요소에 있어야 하므로 container에 position:relativ; 삽입*/
+  position: absolute;
+  top: -420px;
+  right: 0; /*0은 단위를 붙이지 않음*/
+}
+
+section.youtube .ratio {
+  /*모서리 깍기*/
+  border-radius: 10px;
+  /*모서리만 깍아도 의미가 없어서 overflow: hidden으로 제거해줘야 한다.*/
+  overflow: hidden;
+  background-color: black;
+}
+
+@media (max-width: 786px) {
+  section.youtube img.astronaut {
+    display: none; /*이미지를 안보이게 처리*/
+  }
+}
+
+
+section.features {
+  
+}
+
+
+section.features .container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+ 
+}
+
+section.features .card {
+  color: #627597;
+  border: none; /*테두리선 사용하지 않겠다.*/
+}
+
+section.features .card img { 
+  padding: 30px 60px;
+}
+
+@media (max-width: 575px) {
+  section.features .card img {
+    padding: 20px 30px;
+  }
+}
+
+
+section.map {
+  
+}
+section.map .container {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  color: #627597;
+}
+
+section.map h1 {
+  font-size: 44px;
+  font-weight: 700;
+}
+
+section.map p {
+  font-size: 24px;
+}
+/*class는 중복가능 이름 사용가능하므로 정확하게 선택
+ id의 경우 중복가능한 것이 아닌 고유한 이름 - 중복한 이름이 있으면 안됨 
+ 따라서 조상요소를 선택할 필요가 없다.*/
+#map {
+  height: 500px;
+  border: 1px solid rgba(0, 0, 0, .2); /* .2는 투명도 0에 가까울수록 투명 1에 가까울수록 불투명*/
+  border-radius: 10px;
+  /*z축 2D가 아닌 효과*/
+   z-index: 1;
+}
+
+footer {
+  background-color: #040d22;
+  position: relative;
+  margin-top: 20%;
+
+}
+
+footer .curve {
+  transform: scale(1, -1); /*위 아래 반전*/
+  position: absolute;
+  top: -1px;
+  left:0;
+ 
+}
+footer .container {
+
+}
+footer img.illustration{
+  width: 100%; /*container의 100% 만큼 사용하겠다 => 줄어드는 의미*/
+  margin-top: -33%; /*이미지가 올라가 덥게 만듦*/
+  margin-bottom: 50px;
+  transform: scale(-1, 1); /*좌우가 바뀜 - 반전*/
+}
+
+footer img.logo {
+  opacity: .4;
+
+}
+
+footer h5 {
+  font-weight: 700px;
+  color: rgba(225, 225, 225, 0.4);
+  margin-bottom: 20px;
+}
+
+footer ul li {
+  margin-bottom: 10px;
+
+}
+footer ul li a {
+  color: rgba(225, 225, 225, 0.4);
+  text-decoration: none;
+  transition: .3s; /*전환 효과 몇초에 걸쳐서 바뀔것인가.*/
+}
+
+footer ul li a:hover {
+  color: white;
+}
+
+footer .site-links {
+  margin: 0;
+  margin-top: 60px;
+  padding: 20px;
+  background-color: rgba(225, 225, 225, .05);
+  display: flex; /*수평 정렬 d-flex*/
+  justify-content: center;
+  flex-wrap: wrap; /*flex의 기본값은 nowrpa: 줄바꿈을 하지 않겠다.*/
+}
+
+footer .site-links li {
+  color: rgba(225, 225, 225, 0.4);
+  margin: 0; /*margin값 모두 초기화*/
+  margin-right: 20px;
+
+}
+footer .site-links li:last-child {
+  margin-right: 0; /*초기화*/
+}
+
+@media (max-width: 992px) {
+  footer {
+    text-align: center;   
+  }
+  footer img.logo {
+    margin-bottom: 50px;
+  }
+}
